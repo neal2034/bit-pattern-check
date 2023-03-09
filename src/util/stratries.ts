@@ -1,7 +1,15 @@
 /**
  *  this file is used to  detect different pattern
  */
-import {SimpleKeyValueObject, THREE_DIG} from "../constant/regex";
+import {
+    D3_PATTERN,
+    D4_PATTERN,
+    D5_PATTERN,
+    D6_PATTERN,
+    D6_PLUS_PATTERN, OX_DIGITS_PATTERN,
+    SimpleKeyValueObject,
+    THREE_DIG
+} from "../constant/regex";
 import {REGEX_3D, REGEX_4D, REGEX_5D, REGEX_6D, REGEX_6D_PLUS, REGEX_OX_DIGITS} from "../constant/regex";
 
 export type STRATEGY = "3D" | "4D" | "5D" | "6D" | "6D_PLUS" | "OX_DIGITS"
@@ -39,8 +47,23 @@ export const strategies = {
  */
 export const getStrategyKey = function (str: string): Set<STRATEGY> {
     const result = new Set<STRATEGY>()
-    if (THREE_DIG.test(str) || str.length === 3) {
+    if (D3_PATTERN.test(str) || str.length === 3) {
         result.add("3D")
+    }
+    if(D4_PATTERN.test(str) || str.length === 4){
+        result.add("4D")
+    }
+    if(D5_PATTERN.test(str)){
+        result.add("5D")
+    }
+    if(D6_PATTERN.test(str)){
+        result.add("6D")
+    }
+    if(D6_PLUS_PATTERN.test(str)){
+        result.add('6D_PLUS')
+    }
+    if(OX_DIGITS_PATTERN.test(str)){
+        result.add('OX_DIGITS')
     }
     return result
 }

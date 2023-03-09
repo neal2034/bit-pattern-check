@@ -13,6 +13,7 @@ function doTest(data:ITestData[]){
         try {
             deepEqual(detectPatterns(`${dataItem.data}.bit`), new Set(dataItem.expect))
         }catch (err){
+            // console.log(detectPatterns(`${dataItem.data}.bit`))
             failData.push(dataItem)
             fail++;
 
