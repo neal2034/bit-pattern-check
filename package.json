@@ -1,0 +1,17 @@
+{
+  "name": "bit-pattern-check",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc && node dist/index.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/assert": "^1.5.6",
+    "assert": "^2.0.0"
+  }
+}
