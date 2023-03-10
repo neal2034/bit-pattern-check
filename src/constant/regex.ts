@@ -30,45 +30,9 @@ const getFlagRegex = ()=> {
     return  `^(${flagUnicode})\\d{3}$`
 }
 
-
-//regex for 3D
+//pattern regex
 export const D3_PATTERN = /^(0x)?(\D{0,4})?\d{3}°?$/
-export const THREE_DIG = /^\d{3}$/
-const AAA = /^(\d)\1{2}$/
-const ABC = /^(\d)(?!\1)(\d)(?!\1|\2)(\d)$/
-const ABB = /^(\d)(?!\1)(\d)\2$/
-const ABA = /^(\d)(?!\1)(\d)\1$/
-const AAB = /^(\d)\1(?!\1)(\d)$/
-const DEGREE_360 = /^((0((0[1-9])|([1-9]\d)))|([1-2]\d\d)|(3(([0-5]\d)|(60))))°$/
-const HEX_THREE_DIG = /^0x\d{3}$/
-const CHINESE_NUM = "^[chineseNum]{3}$".replace("chineseNum",chineseNum)
-export const CHINESE_NUM_REGE = new RegExp(CHINESE_NUM)
-const japanNumRegex =  "^[japaneseNum]{3}$".replace("japaneseNum",japaneseNum)
-export const JAPAN_NUM_REGEX = new RegExp(japanNumRegex)
-const arabicNumRegex =  "^[arabicNum]{3}$".replace("arabicNum",arabicNum)
-const ARABIC_NUM_REGEX = new RegExp(arabicNumRegex)
-const FLAG_REGEX =  new RegExp(getFlagRegex(), "u")
-
-//regex for 4D
 export const D4_PATTERN = /^(0x)?\d{4}$/
-const FOUR_DIG = /^\d{4}$/
-const ABCD = /^(\d)(?!\1)(\d)(?!\1|\2)(\d)(?!\1|\2|\3)(\d)$/
-const AAAA = /^(\d)\1{3}$/
-const ABBB = /^(\d)(?!\1)(\d)\2\2$/
-const AABB = /^(\d)\1(?!\1)(\d)\2$/
-const AAAB = /^(\d)\1{2}(?!\1)(\d)$/
-const ABAA = /^(\d)(?!\1)(\d)\1{2}$/
-const AABA = /^(\d)\1(?!\1)(\d)\1$/
-const ABBA = /^(\d)(?!\1)(\d)\2\1$/
-const ABAB = /^(\d)(?!\1)(\d)\1\2$/
-const AABC = /^(\d)\1(?!\1)(\d)(?!\1|\2)(\d)$/
-const ABCC = /^(\d)(?!\1)(\d)(?!\1|\2)(\d)\3$/
-const ABBC = /^(\d)(?!\1)(\d)\2(?!\1|\2)(\d)$/
-const ZXXX = /^0\d{3}$/
-const ZZXX = /^00\d{2}$/
-const ZXZX = /^0\d0\d$/
-
-//regex for 5D
 export const D5_PATTERN = /^\d{5}$/
 export const D6_PATTERN = /^\d{6}$/
 export const D6_PLUS_PATTERN = /^\d{6,}|(\d{1,3}0000)$/
@@ -95,39 +59,37 @@ function isTimesTable(str:string){
 export interface SimpleKeyValueObject {
     [key: string]: any
 }
-
-
 export const REGEX_3D:SimpleKeyValueObject = {
-    "999" : THREE_DIG,
-    "AAA" : AAA,
-    "ABC" : ABC,
-    "ABB" : ABB,
-    "ABA" : ABA,
-    "AAB" : AAB,
-    "DEGREE_360" : DEGREE_360,
-    "0x999" : HEX_THREE_DIG,
-    "999JP" : JAPAN_NUM_REGEX,
-    "999CN" : CHINESE_NUM_REGE,
-    "Arabic999" : ARABIC_NUM_REGEX,
-    "Flag999" : FLAG_REGEX,
+    "999" :  /^\d{3}$/,
+    "AAA" : /^(\d)\1{2}$/,
+    "ABC" : /^(\d)(?!\1)(\d)(?!\1|\2)(\d)$/,
+    "ABB" : /^(\d)(?!\1)(\d)\2$/,
+    "ABA" : /^(\d)(?!\1)(\d)\1$/,
+    "AAB" :  /^(\d)\1(?!\1)(\d)$/,
+    "DEGREE_360" : /^((0((0[1-9])|([1-9]\d)))|([1-2]\d\d)|(3(([0-5]\d)|(60))))°$/,
+    "0x999" : /^0x\d{3}$/,
+    "999JP" : new RegExp("^[japaneseNum]{3}$".replace("japaneseNum",japaneseNum)),
+    "999CN" : new RegExp("^[chineseNum]{3}$".replace("chineseNum",chineseNum)),
+    "Arabic999" : new RegExp("^[arabicNum]{3}$".replace("arabicNum",arabicNum)),
+    "Flag999" : new RegExp(getFlagRegex(), "u"),
 }
 export const REGEX_4D:SimpleKeyValueObject = {
-    "10K" : FOUR_DIG,
-    "ABCD" : ABCD,
-    "AAAA" : AAAA,
-    "ABBB" : ABBB,
-    "AABB" : AABB,
-    "AAAB" : AAAB,
-    "ABAA" : ABAA,
-    "AABA" : AABA,
-    "ABBA" : ABBA,
-    "ABAB" : ABAB,
-    "AABC" : AABC,
-    "ABCC" : ABCC,
-    "ABBC" : ABBC,
-    "0XXX" : ZXXX,
-    "00XX" : ZZXX,
-    "0X0X" : ZXZX,
+    "10K" : /^\d{4}$/,
+    "ABCD" : /^(\d)(?!\1)(\d)(?!\1|\2)(\d)(?!\1|\2|\3)(\d)$/,
+    "AAAA" : /^(\d)\1{3}$/,
+    "ABBB" : /^(\d)(?!\1)(\d)\2\2$/,
+    "AABB" : /^(\d)\1(?!\1)(\d)\2$/,
+    "AAAB" : /^(\d)\1{2}(?!\1)(\d)$/,
+    "ABAA" : /^(\d)(?!\1)(\d)\1{2}$/,
+    "AABA" : /^(\d)\1(?!\1)(\d)\1$/,
+    "ABBA" : /^(\d)(?!\1)(\d)\2\1$/,
+    "ABAB" : /^(\d)(?!\1)(\d)\1\2$/,
+    "AABC" : /^(\d)\1(?!\1)(\d)(?!\1|\2)(\d)$/,
+    "ABCC" : /^(\d)(?!\1)(\d)(?!\1|\2)(\d)\3$/,
+    "ABBC" : /^(\d)(?!\1)(\d)\2(?!\1|\2)(\d)$/,
+    "0XXX" : /^0\d{3}$/,
+    "00XX" : /^00\d{2}$/,
+    "0X0X" :  /^0\d0\d$/,
     "0XX0" : /^0\d{2}0$/,
     'XX00' : /^\d{2}00$/,
     'XX88' : /^\d{2}88$/,

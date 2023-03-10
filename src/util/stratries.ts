@@ -8,11 +8,12 @@ import {
     D6_PATTERN,
     D6_PLUS_PATTERN, OX_DIGITS_PATTERN,
     SimpleKeyValueObject,
-    THREE_DIG
 } from "../constant/regex";
 import {REGEX_3D, REGEX_4D, REGEX_5D, REGEX_6D, REGEX_6D_PLUS, REGEX_OX_DIGITS} from "../constant/regex";
 
+
 export type STRATEGY = "3D" | "4D" | "5D" | "6D" | "6D_PLUS" | "OX_DIGITS"
+
 
 /**
  * get the detect function with regex map, the function could be used to retrieve
@@ -42,7 +43,7 @@ export const strategies = {
 
 
 /**
- * get strategy key via string
+ * get strategy keys via string
  * @param str
  */
 export const getStrategyKey = function (str: string): Set<STRATEGY> {
